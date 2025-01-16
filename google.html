@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .student-card{
+            background-color: #f1f1f1;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+        }
+        .inputbox{
+            
+            margin-left: 30%;
+        width: 500px;
+        border: solid black;
+        border-radius: 20px;
+        height: 25px;
+        cursor: pointer;
+            
+
+        }
+        .heading{
+            text-align: center;
+            
+            color:  white;
+            background-color: black;
+           
+            
+        }
+        .searchbox{
+            background-color: black;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="searchbox" > 
+    <h1 class="heading">Student </h1>
+    <div class="searchbox" > 
+    
+    <input type="text" id="search" class="inputbox" placeholder="Search" onkeyup="loadSearchResult()"/></div>
+    <div id="students-container">
+
+    </div>
+    <script> 
+        const students = [
+            "Vrushali",
+            "Pratik",
+            "Pranay",
+            "Jeetu",
+            "Karan",
+            "Suraj",
+            "Anand",
+            "Ankita",
+            "Arpita",
+            "Kustari",
+            "Vinite"
+        ]
+        const studentsContainer = document.getElementById('students-container');
+
+        students.forEach((stud)=>{
+            studentsContainer.innerHTML += `<div class='student-card'>${stud}</div>`
+        })
+         
+        function loadSearchResult() {
+            const inputElement = document.getElementById('search');
+            const searchText = inputElement.value.toLowerCase();
+
+            studentsContainer.innerHTML = '';
+
+            const filteredStudents = students.filter((stud)=>{
+                if(stud.toLowerCase().includes(searchText)) {
+                    return true;
+                    
+                }
+            })
+            filteredStudents.forEach((stud)=>{
+                studentsContainer.innerHTML += `<div class='student-card'>${stud}<div>`
+            })
+        }
+    </script>
+</body>
+</html>
